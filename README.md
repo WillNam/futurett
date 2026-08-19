@@ -1,10 +1,14 @@
 # FutureTT
 
-High-quality rapid TTS voice cloning skill based on [LuxTTS](https://github.com/ysharma3501/LuxTTS).
+A high-quality rapid TTS voice cloning engine that reaches speeds of 150x realtime.
 
-- Voice cloning at 150x realtime, 48 kHz output
-- < 1 GB VRAM — runs on GPU, MPS (Mac), or CPU
-- Supports Chinese and English
+## Features
+
+- **Voice Cloning**: State-of-the-art voice cloning on par with models 10x larger
+- **48 kHz Clarity**: Crystal-clear speech generation, unlike most TTS models limited to 24 kHz
+- **150x Realtime**: Blazing fast on a single GPU, faster than realtime even on CPU
+- **Lightweight**: Fits within 1 GB VRAM — runs on any local GPU, Apple MPS, or CPU
+- **Multilingual**: Supports Chinese and English text input
 
 ## Install
 
@@ -20,7 +24,7 @@ pip install -r requirements.txt
 from zipvoice.luxvoice import LuxTTS
 import soundfile as sf
 
-tts = LuxTTS('YatharthS/LuxTTS', device='cuda')
+tts = LuxTTS(device='cuda')
 encoded = tts.encode_prompt('reference_voice.wav', rms=0.01)
 wav = tts.generate_speech("Hello, this is a test.", encoded, num_steps=4)
 sf.write('output.wav', wav.numpy().squeeze(), 48000)

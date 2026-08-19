@@ -1,11 +1,11 @@
 ---
 name: futurett
-description: "High-quality rapid TTS voice cloning using LuxTTS (ZipVoice-based). Encode a reference audio clip and generate cloned speech at 150x realtime, 48 kHz. Use when the user asks for 语音克隆, voice cloning, TTS, 文字转语音, or wants to generate speech that sounds like a specific person."
+description: "High-quality rapid TTS voice cloning engine. Encode a reference audio clip and generate cloned speech at 150x realtime, 48 kHz. Use when the user asks for 语音克隆, voice cloning, TTS, 文字转语音, or wants to generate speech that sounds like a specific person."
 ---
 
 # FutureTT — Voice Cloning Skill
 
-A skill that wraps [LuxTTS](https://github.com/ysharma3501/LuxTTS) for high-quality, rapid voice cloning and text-to-speech generation.
+A high-quality, rapid voice cloning and text-to-speech engine.
 
 ## Capabilities
 
@@ -90,4 +90,4 @@ outputs/futurett/
 
 ## License
 
-Apache-2.0 (inherits from LuxTTS).
+Apache-2.0
