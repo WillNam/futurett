@@ -1,6 +1,6 @@
 # FutureTT
 
-A high-quality rapid TTS voice cloning engine that reaches speeds of 150x realtime.
+A self-developed, high-quality TTS voice cloning engine that reaches speeds of 150x realtime. Built on the ZipVoice architecture with custom 4-step flow-matching distillation and a 48 kHz vocoder.
 
 ## Features
 

@@ -1,11 +1,11 @@
 ---
 name: futurett
-description: "High-quality rapid TTS voice cloning engine. Encode a reference audio clip and generate cloned speech at 150x realtime, 48 kHz. Use when the user asks for 语音克隆, voice cloning, TTS, 文字转语音, or wants to generate speech that sounds like a specific person."
+description: "Self-developed high-quality rapid TTS voice cloning engine. Encode a reference audio clip and generate cloned speech at 150x realtime, 48 kHz. Use when the user asks for 语音克隆, voice cloning, TTS, 文字转语音, or wants to generate speech that sounds like a specific person."
 ---
 
-# FutureTT — Voice Cloning Skill
+# FutureTT — Voice Cloning Engine
 
-A high-quality, rapid voice cloning and text-to-speech engine.
+A self-developed, high-quality voice cloning and text-to-speech engine built on the ZipVoice architecture with custom 4-step flow-matching distillation and a proprietary 48 kHz vocoder.
 
 ## Capabilities
 
@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 Key dependencies: `torch`, `torchaudio`, `vocos`, `librosa`, `safetensors`, `huggingface_hub`, `piper-phonemize`, `linacodec` (from git).
 
-The model weights are downloaded automatically from Hugging Face (`YatharthS/LuxTTS`) on first use.
+Model weights are downloaded automatically on first use.
 
 ## Quick Start
 
@@ -31,7 +31,7 @@ from zipvoice.luxvoice import LuxTTS
 import soundfile as sf
 
 # Load model (auto-detects cuda → mps → cpu)
-tts = LuxTTS('YatharthS/LuxTTS', device='cuda')
+tts = LuxTTS(device='cuda')
 
 # Encode a reference voice (min 3 seconds, wav/mp3)
 encoded = tts.encode_prompt('reference_voice.wav', rms=0.01)
@@ -87,6 +87,10 @@ outputs/futurett/
 - Set `return_smooth=True` if you hear metallic artifacts.
 - Lower `t_shift` for fewer pronunciation errors (at the cost of naturalness).
 - For Mac users, the model auto-falls back to MPS if CUDA is unavailable.
+
+## Architecture
+
+FutureTT uses a ZipVoice backbone distilled to 4 diffusion steps via custom flow-matching, paired with a 48 kHz Vocos-based vocoder (vs. the standard 24 kHz). The result is a sub-1GB model delivering studio-quality cloned speech at 150x realtime.
 
 ## License
 
